@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private bossEvent boss;
     private bool bAtk, bBossEvent;
     public bool bFadeCorutine;
+    private EnemySpawn enemySpawner;
+    private GameObject respawnObject;
 
     public Animator animator;       //애니메이션 담당
 
@@ -36,10 +38,12 @@ public class Player : MonoBehaviour
         playerRigidbody.position = new Vector3(-1.0f, 0.0f, 0.0f); 
         playerRenderer = GetComponent<SpriteRenderer>(); // 플레이어의 SpriteRenderer 컴포넌트 가져오기
         fadeManger = FindObjectOfType<FadeManger>();
+        respawnObject = GameObject.FindWithTag("Respawn");
+        enemySpawner = respawnObject.GetComponent<EnemySpawn>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         vel = playerRigidbody.velocity;     // 캐릭터의 속도값 저장 * 컴파일용임 *
 
@@ -77,7 +81,6 @@ public class Player : MonoBehaviour
         if (col.CompareTag("Enemy") && !bBossEvent)    // 적과 부딪혔을 떄
         {
             enemy = col.GetComponent<enemyState>();
-            StartCoroutine(ChangeColor());
             enemy.health -= atk;
             FloatingText.Instance.ShowFloatingText(enemy.transform, 0f, 0.5f, atk.ToString(), new Color(1f, 1f, 1f));      //플로팅텍스트
 
@@ -100,7 +103,6 @@ public class Player : MonoBehaviour
         else if (col.CompareTag("Enemy") && bBossEvent)    // 적과 부딪혔을 떄
         {
             boss = col.GetComponent<bossEvent>();
-            StartCoroutine(ChangeColor());
             boss.health -= atk;
             FloatingText.Instance.ShowFloatingText(boss.transform, 0f, 1.5f, atk.ToString(), new Color(1f, 1f, 1f));      //플로팅텍스트
 
@@ -114,8 +116,7 @@ public class Player : MonoBehaviour
             {
                 col.GetComponent<Rigidbody2D>().AddForce(new Vector2(500f, 250f));  // 충돌한 개체의 rigidbody에 접근하여 vector값을 추가함
                 col.GetComponent<Rigidbody2D>().AddTorque(100);                     // 충돌한 개체의 rigidbody에 접근하여 rotation값을 추가함
-                Destroy(col.transform.GetChild(0).gameObject);                      // 충돌한 개체의 첫번째 상속개체를 파괴함
-                //boss.deadEvent();
+                boss.DeadEvent();
             }
         }
 
@@ -136,7 +137,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(attackCool);
         while (enemy.health > 0 && !bAtk) // 적의 체력이 0보다 클 때 반복
         {
-            StartCoroutine(ChangeColor());
             enemy.health -= atk;
             if (enemy.health <= 0)
             {
@@ -156,7 +156,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(attackCool);
         while (boss.health > 0 && !bAtk) // 적의 체력이 0보다 클 때 반복
         {
-            StartCoroutine(ChangeColor());
             boss.health -= atk;
             if (boss.health <= 0)
             {
@@ -171,17 +170,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // 플레이어의 색을 변경하는 메서드
-    private IEnumerator ChangeColor()
-    {
-        // 빨간색으로 색 변경
-        playerRenderer.color = Color.gray;
-
-        // 0.5초 후에 원래 색으로 복원
-        yield return new WaitForSeconds(0.1f);
-        playerRenderer.color = Color.white;
-    }
-
     private void OnAtkFalseAnimation()  //공격 애니메이션 종료
     {
         animator.SetBool("atk", false);
@@ -191,6 +179,7 @@ public class Player : MonoBehaviour
 
     public void PlayerMoveStartPoint(bool checkBoss = false, int bossNumber = 0)
     {
+        Debug.Log("호출");
         // "Enemy" 태그를 가진 모든 GameObject를 제거
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject obj in objectsWithTag)
@@ -199,7 +188,7 @@ public class Player : MonoBehaviour
         }                                                                                                                          
                                                                                                                                    
         // "Respawn" 태그를 가진 GameObject를 찾아서 변수에 할당                                                                   
-        GameObject respawnObject = GameObject.FindWithTag("Respawn");                                                              
+                                                                 
         if (respawnObject != null)                                                                                                 
         {
             bBossEvent = false;     // bossEvent 만족 조건 끄기
@@ -213,7 +202,7 @@ public class Player : MonoBehaviour
             GameObject.Find("Ui_text").GetComponent<EditText>().updateFloor();                                                  
                                                                                                                                           
             // "Respawn" 태그를 가진 GameObject에서 newenemySpawn 컴포넌트를 가져와서 적 스폰               
-            EnemySpawn enemySpawner = respawnObject.GetComponent<EnemySpawn>();          
+                     
             
             // 조건에 맞게 선택해서 실행
             if (enemySpawner != null && !checkBoss) // checkBoss가 꺼져있으면 일반 몹 생성                                                                                      
