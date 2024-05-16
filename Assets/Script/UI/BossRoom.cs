@@ -31,7 +31,7 @@ public class BossRoom : MonoBehaviour
 
         Button_1.onClick.AddListener(OnClickButton_1);   //1占쏙옙 占쏙옙튼 클占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占싶쏙옙 화占쏙옙 on 占쏙옙 占쌕몌옙 화占쏙옙占 off
         BossEntrance.SetActive(false); //보스 전환때 나오는 워링 화면
-`
+
         Button_1.onClick.AddListener(OnClickButton_1);   //1번 버튼 클릭시 스테이터스 화면 on 및 다른 화면들 off
         Button_2.onClick.AddListener(OnClickButton_2);
         Button_3.onClick.AddListener(OnClickButton_3);
