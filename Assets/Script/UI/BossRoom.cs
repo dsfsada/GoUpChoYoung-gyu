@@ -27,11 +27,9 @@ public class BossRoom : MonoBehaviour
         Ui_3.SetActive(false);
         Ui_4.SetActive(false);
 
-        BossEntrance.SetActive(false); //보스 전환때 나오는 워링 화면
-    }
 
-    private void Update()
-    {
+        BossEntrance.SetActive(false); //보스 전환때 나오는 워링 화면
+
         Button_1.onClick.AddListener(OnClickButton_1);   //1번 버튼 클릭시 스테이터스 화면 on 및 다른 화면들 off
         Button_2.onClick.AddListener(OnClickButton_2);
         Button_3.onClick.AddListener(OnClickButton_3);

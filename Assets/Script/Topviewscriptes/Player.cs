@@ -179,6 +179,7 @@ public class Player : MonoBehaviour
 
     public void PlayerMoveStartPoint(bool checkBoss = false, int bossNumber = 0)
     {
+        Debug.Log("호출");
         // "Enemy" 태그를 가진 모든 GameObject를 제거
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject obj in objectsWithTag)
