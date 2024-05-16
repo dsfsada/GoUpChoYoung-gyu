@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class BossRoom : MonoBehaviour
 {
-    public Button Button_1; //½ºÅ×ÀÌÅÍ½º È­¸é on¹öÆ°
+    public Button Button_1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ È­ï¿½ï¿½ onï¿½ï¿½Æ°
     public Button Button_2;
     public Button Button_3;
     public Button Button_4;
 
-    public GameObject Ui_1; //½ºÅ×ÀÌÅÍ½º È­¸é
+    public GameObject Ui_1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ È­ï¿½ï¿½
     public GameObject Ui_2;
-    public GameObject Ui_3; //º¸½º È­¸é
+    public GameObject Ui_3; //ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½
     public GameObject Ui_4;
 
     public Button EnterButtonGolem;
@@ -27,10 +27,15 @@ public class BossRoom : MonoBehaviour
         Ui_3.SetActive(false);
         Ui_4.SetActive(false);
 
+<<<<<<< Updated upstream
 
-        BossEntrance.SetActive(false); //º¸½º ÀüÈ¯¶§ ³ª¿À´Â ¿ö¸µ È­¸é
+        BossEntrance.SetActive(false); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½
 
-        Button_1.onClick.AddListener(OnClickButton_1);   //1¹ø ¹öÆ° Å¬¸¯½Ã ½ºÅ×ÀÌÅÍ½º È­¸é on ¹× ´Ù¸¥ È­¸éµé off
+=======
+        BossEntrance.SetActive(false); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½
+
+>>>>>>> Stashed changes
+        Button_1.onClick.AddListener(OnClickButton_1);   //1ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ È­ï¿½ï¿½ on ï¿½ï¿½ ï¿½Ù¸ï¿½ È­ï¿½ï¿½ï¿½ off
         Button_2.onClick.AddListener(OnClickButton_2);
         Button_3.onClick.AddListener(OnClickButton_3);
         Button_4.onClick.AddListener(OnClickButton_4);
@@ -83,7 +88,7 @@ public class BossRoom : MonoBehaviour
         StartCoroutine(Entrancefalse());
     }
 
-    IEnumerator Entrancefalse() //º¸½º ÀÔÀå½Ã ¿ö¸µ º¸¿©ÁÖ´Â ÄÚ·çÆ¾
+    IEnumerator Entrancefalse() //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú·ï¿½Æ¾
     {
         BossEntrance.SetActive(true);
         yield return new WaitForSeconds(2f);
