@@ -27,14 +27,11 @@ public class BossRoom : MonoBehaviour
         Ui_3.SetActive(false);
         Ui_4.SetActive(false);
 
-<<<<<<< Updated upstream
 
         BossEntrance.SetActive(false); //���� ��ȯ�� ������ ���� ȭ��
 
-=======
         BossEntrance.SetActive(false); //���� ��ȯ�� ������ ���� ȭ��
 
->>>>>>> Stashed changes
         Button_1.onClick.AddListener(OnClickButton_1);   //1�� ��ư Ŭ���� �������ͽ� ȭ�� on �� �ٸ� ȭ��� off
         Button_2.onClick.AddListener(OnClickButton_2);
         Button_3.onClick.AddListener(OnClickButton_3);
