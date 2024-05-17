@@ -28,7 +28,7 @@ public class EnemySpawn : MonoBehaviour
             Instantiate(enemy, new Vector3(spawnPos_x + i * 5, spawnPos_y - 1, 0), Quaternion.identity);
         }
     }
-
+    
     public void setBossGolemSpawn()
     {
         Instantiate(bossGolem, new Vector3(spawnPos_x * 5, spawnPos_y - 0.5f, 0), Quaternion.identity);

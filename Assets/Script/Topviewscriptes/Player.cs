@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
         if (respawnObject != null)                                                                                                 
         {
             bBossEvent = false;     // bossEvent 만족 조건 끄기
-            // 캐릭터 위치를 시작 위치로 이동                                                                                      
+            // 캐릭터 위치를 시작 위치로 이동
             playerRigidbody.position = new Vector3(-1.0f, -0.0f, 0.0f);                                                            
                                                                                                          
             // health를 최대 체력으로 초기화                                                                                       
@@ -210,7 +210,8 @@ public class Player : MonoBehaviour
                 enemySpawner.setEnemySpawn();
             }
             else if(enemySpawner != null && checkBoss)  // checkBoss가 켜져있으면 보스 몹 생성
-            {
+            { 
+                playerRigidbody.velocity = Vector3.zero;
                 if(bossNumber == 0)
                 {
                     enemySpawner.setBossGolemSpawn();
