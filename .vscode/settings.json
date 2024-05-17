@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GoUpChoYoung-gyu.sln"
+    "dotnet.defaultSolution": "GoUpChoYoung-gyu.sln",
+    "dotnet.preferCSharpExtension": true
 }
